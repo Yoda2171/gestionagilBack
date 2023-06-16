@@ -6,6 +6,10 @@ import { UserModule } from './user/user.module';
 import { PostModule } from './post/post.module';
 
 
+
+import { RamoModule } from './ramo/ramo.module';
+
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -20,6 +24,7 @@ import { PostModule } from './post/post.module';
     }),
     UserModule,
     PostModule,
+    RamoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

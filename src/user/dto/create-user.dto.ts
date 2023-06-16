@@ -4,6 +4,9 @@ export class CreateUserDto {
     username:string;
 
     @IsString()
+    foto:string;
+
+    @IsString()
     correo:string;
 
     @IsString()

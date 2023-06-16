@@ -1,4 +1,7 @@
-import {  Entity, Column,PrimaryGeneratedColumn   } from 'typeorm';
+
+import { Ramo } from 'src/ramo/entities/ramo.entity';
+import { User } from 'src/user/entities/user.entity';
+import {  Entity, Column,PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn   } from 'typeorm';
 
 
 @Entity({name:'post'})
@@ -7,12 +10,22 @@ export class Post {
     id:number;
 
     @Column()
-    comentarios:string;
+    titulo:string;
 
     @Column()
-    likes:number;
+    body: string;
 
     @Column()
-    imagen: string;
+    fechaCreacion: string;
+
+    @ManyToOne(() => User,(user:User) => user.posts_id,{onUpdate:'CASCADE', onDelete:'CASCADE'})
+    @JoinColumn({name:'user_id'})
+    user_id:string;
+
+    @ManyToOne(() => Ramo, ramo => ramo.posts)
+    @JoinColumn({name:'ramo_id'})
+    ramo_id:string;
+
     
+
 }
