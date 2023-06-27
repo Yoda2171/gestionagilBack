@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { LoginDto } from './dto/login-user.dto';
 import { User } from './entities/user.entity';
+import { Chat } from 'src/chat/entities/chat.entity';
 
 @Controller('user')
 export class UserController {
@@ -30,13 +31,10 @@ export class UserController {
     return this.userService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(id, updateUserDto);
+  @Get(':id/mensajes')
+  async getUserMessages(@Param('id') userId: number): Promise<Chat[]> {
+    return this.userService.getUserMessages(userId);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
-  }
+  
 }

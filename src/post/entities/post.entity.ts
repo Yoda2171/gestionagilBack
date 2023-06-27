@@ -1,7 +1,9 @@
 
+import { IsNotEmpty } from 'class-validator';
+import { Comentario } from 'src/comentarios/entities/comentario.entity';
 import { Ramo } from 'src/ramo/entities/ramo.entity';
 import { User } from 'src/user/entities/user.entity';
-import {  Entity, Column,PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn   } from 'typeorm';
+import {  Entity, Column,PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, OneToMany, ManyToMany   } from 'typeorm';
 
 
 @Entity({name:'post'})
@@ -13,6 +15,7 @@ export class Post {
     titulo:string;
 
     @Column()
+    @IsNotEmpty()
     body: string;
 
     @Column()
@@ -26,6 +29,7 @@ export class Post {
     @JoinColumn({name:'ramo_id'})
     ramo_id:string;
 
-    
+    @OneToMany(() => Comentario, comentario => comentario.post_id)
+    comentarios_id:Comentario[];
 
 }

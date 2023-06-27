@@ -8,6 +8,8 @@ import { PostModule } from './post/post.module';
 
 
 import { RamoModule } from './ramo/ramo.module';
+import { ComentariosModule } from './comentarios/comentarios.module';
+import { ChatModule } from './chat/chat.module';
 
 
 @Module({
@@ -25,6 +27,8 @@ import { RamoModule } from './ramo/ramo.module';
     UserModule,
     PostModule,
     RamoModule,
+    ComentariosModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [AppService],
